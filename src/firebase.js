@@ -2,13 +2,13 @@ import firebase from 'firebase/app';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "이렇게키값이-들어있다_000000000",
-    authDomain: "react-firebase-nwitter.firebaseapp.com",
-    projectId: "react-firebase-nwitter",
-    storageBucket: "react-firebase-nwitter.appspot.com",
-    messagingSenderId: "00000000000",
-    appId: "1:00000000000:web:42dfea9a2d400000000000",
-    measurementId: "G-0000000000"
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGIN_ID,
+    appId: process.env.REACT_APP_APP_ID,
 };
 
 export default firebase.initializeApp(firebaseConfig);
