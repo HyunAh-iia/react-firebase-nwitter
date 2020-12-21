@@ -8,6 +8,6 @@ Cloning Twitter React + Firebase by Nomad Coders
 ---
 ```
 $ git clone https://github.com/HyunAh-iia/react-firebase-nwitter.git
-$ cd react-firebase-nwitter && yarn install
-$ yarn start
+$ cd react-firebase-nwitter && npm install
+$ npm run star
 ```
