@@ -1,4 +1,5 @@
 import firebase from 'firebase/app';
+import 'firebase/auth';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -11,4 +12,7 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_APP_ID,
 };
 
-export default firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+
+export const authService = firebase.auth(); // Firebase 중 필요한 서비스만 export 하도록 변경
+//export default firebase.initializeApp(firebaseConfig);

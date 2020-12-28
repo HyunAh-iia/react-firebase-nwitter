@@ -1,5 +1,5 @@
 import React from 'react';
-import EditProfile from "./EditProfile";
+import EditProfile from "routes/EditProfile";
 
 const Home = () => <span>Home</span>;
 export default Home;
