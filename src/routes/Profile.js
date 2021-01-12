@@ -1,6 +1,16 @@
 import React from 'react';
-import EditProfile from "routes/EditProfile";
+import {authService} from "../myFirebase";
 
-const Profile = () => <span>Profile</span>;
+const Profile = () => {
+    const onLogout = () => authService.signOut();
+
+    return (
+        <>
+            <button onClick={onLogout}>로그아웃</button>
+            <span>Profile</span>
+        </>
+    );
+};
+
 
 export default Profile;
