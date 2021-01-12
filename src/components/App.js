@@ -12,7 +12,6 @@ function App() {
         // firebase 초기화, 로그아웃, 계정 생성, 로그인 때에도 트리거 발생
         // https://firebase.google.com/docs/auth/web/manage-users?hl=ko
         authService.onAuthStateChanged((user) => {
-            console.log(user);
             if (user) {
                 setIsLoggedIn(true);
             } else {

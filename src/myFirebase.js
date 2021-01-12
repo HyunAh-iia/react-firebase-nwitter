@@ -14,5 +14,5 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-export const authService = firebase.auth(); // Firebase 중 필요한 서비스만 export 하도록 변경
-//export default firebase.initializeApp(firebaseConfig);
+export const firebaseInstance = firebase;
+export const authService = firebase.auth();
