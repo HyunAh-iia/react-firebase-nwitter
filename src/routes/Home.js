@@ -7,11 +7,11 @@ const Home = ({userObj}) => {
     const [tweets, setTweets] = useState([]);
 
     useEffect(() => {
-        dbService.collection("tweets").onSnapshot(snapshot => {
-            //snapshot.docs => QueryDocumentSnapshot :https://firebase.google.com/docs/reference/node/firebase.firestore.QueryDocumentSnapshot
+        dbService.collection("tweets").onSnapshot(snapshot => { //snapshot => QuerySnapshot
+            //snapshot.docs => QueryDocumentSnapshot
             const tweetArray = snapshot.docs.map( doc=> ({
                 id: doc.id,
-                ...doc.data(),
+                ...doc.data(), // QueryDocumentSnapshot.data()
             }));
 
             setTweets(tweetArray);
