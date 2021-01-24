@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {dbService} from "../myFirebase";
+import {dbService} from "myFirebase";
+import Tweet from "components/Tweet";
 
 const Home = ({userObj}) => {
     const [tweet, setTweet] = useState("");
@@ -39,9 +40,7 @@ const Home = ({userObj}) => {
         </form>
         <div>
             {tweets.map((doc) => (
-                <div key={doc.id}>
-                    <h4>{doc.text}</h4>
-                </div>
+                <Tweet key={doc.id} tweetObj={doc} isOwner={doc.userId === userObj.uid} />
             ))}
         </div>
     </div>;
