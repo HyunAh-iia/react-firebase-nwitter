@@ -5,6 +5,7 @@ import {authService} from "myFirebase";
 function App() {
     const [init, setInit] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userObj, setUserObj] = useState(null);
 
     // useEffect : component가 mount 될 때 시작되는 hook
     useEffect(() => {
@@ -14,15 +15,17 @@ function App() {
         authService.onAuthStateChanged((user) => {
             if (user) {
                 setIsLoggedIn(true);
+                setUserObj(user);
             } else {
                 setIsLoggedIn(false);
+                setUserObj(null);
             }
             setInit(true);
         });
     }, []);
 
     return <>
-        {init ? <Router isLoggedIn={isLoggedIn}/> : "initializing..."}
+        {init ? <Router isLoggedIn={isLoggedIn} userObj={userObj}/> : "initializing..."}
     </>;
 }
 

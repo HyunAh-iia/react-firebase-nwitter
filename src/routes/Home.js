@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {dbService} from "../myFirebase";
 
-const Home = () => {
+const Home = ({userObj}) => {
     const [tweet, setTweet] = useState("");
     const [tweets, setTweets] = useState([]);
     const getTweets = async () => {
@@ -24,8 +24,9 @@ const Home = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         await dbService.collection("tweets").add({
-            tweet,
+            text: tweet,
             createdAt: Date.now(),
+            userId: userObj.uid,
         });
         setTweet("");
     };
@@ -43,7 +44,7 @@ const Home = () => {
         <div>
             {tweets.map((doc) => (
                 <div key={doc.id}>
-                    <h4>{doc.tweet}</h4>
+                    <h4>{doc.text}</h4>
                 </div>
             ))}
         </div>
