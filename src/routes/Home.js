@@ -4,22 +4,18 @@ import {dbService} from "../myFirebase";
 const Home = ({userObj}) => {
     const [tweet, setTweet] = useState("");
     const [tweets, setTweets] = useState([]);
-    const getTweets = async () => {
-        const dbTweets = await dbService.collection("tweets").get();
-        dbTweets.forEach((doc) => {
-            const docObj = {
-                ...doc.data(),
-                id: doc.id,
-            };
-
-            setTweets((prev) => [docObj, ...prev]);
-        });
-    };
 
     useEffect(() => {
-        getTweets();
-    }, []);
+        dbService.collection("tweets").onSnapshot(snapshot => {
+            //snapshot.docs => QueryDocumentSnapshot :https://firebase.google.com/docs/reference/node/firebase.firestore.QueryDocumentSnapshot
+            const tweetArray = snapshot.docs.map( doc=> ({
+                id: doc.id,
+                ...doc.data(),
+            }));
 
+            setTweets(tweetArray);
+        })
+    }, []);
 
     const onSubmit = async (e) => {
         e.preventDefault();
