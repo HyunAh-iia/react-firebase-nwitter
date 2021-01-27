@@ -18,7 +18,7 @@ const Tweet = ({tweetObj, isOwner}) => {
     };
     const onChange = (e) => {
         e.preventDefault();
-        const {target : {value}} = e;
+        const {target: {value}} = e;
         setEditTweet(value);
     }
     const onSubmit = async () => {
@@ -34,26 +34,26 @@ const Tweet = ({tweetObj, isOwner}) => {
                 <>
                     <form>
                         <input
-                        type="text"
-                        onChange={onChange}
-                        value={editTweet}
-                        placeholder="트윗을 수정합니다."
-                        required />
+                            type="text"
+                            onChange={onChange}
+                            value={editTweet}
+                            placeholder="트윗을 수정합니다."
+                            required/>
                     </form>
                     <button onClick={toggleEditing}>취소</button>
                     <button type="submit" onClick={onSubmit}>저장</button>
                 </>
-                ) :
-            (
-            <>
-                <h4>{tweetObj.text}</h4>
-                {isOwner && (
-                    <>
-                      <button onClick={onDelete}>삭제</button>
-                      <button onClick={toggleEditing}>수정</button>
-                    </>
-                )}
-            </>
+            ) : (
+                <>
+                    <h4>{tweetObj.text}</h4>
+                    <img src={tweetObj.image} width="50px" height="50px"/>
+                    {isOwner && (
+                        <>
+                            <button onClick={onDelete}>삭제</button>
+                            <button onClick={toggleEditing}>수정</button>
+                        </>
+                    )}
+                </>
             )}
         </>
     );
