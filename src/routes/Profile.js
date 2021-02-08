@@ -1,8 +1,19 @@
-import React from 'react';
-import {authService} from "../myFirebase";
+import {React, useEffect} from 'react';
+import {authService, dbService} from "../myFirebase";
 
-const Profile = () => {
+const Profile = ({userObj}) => {
     const onLogout = () => authService.signOut();
+    const getMyTweets = async () => {
+        const tweets = await dbService.collection("tweets")
+            .where("userId", "==", userObj.uid)
+            .orderBy("createdAt", "desc")
+            .get();
+        console.log(tweets.docs.map(doc=> doc.data()));
+    };
+
+    useEffect(() => {
+        getMyTweets();
+    }, []);
 
     return (
         <>

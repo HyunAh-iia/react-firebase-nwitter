@@ -14,7 +14,7 @@ const Router = ({isLoggedIn, userObj}) => {
                 {isLoggedIn ?
                     <>
                         <Route exact path="/"><Home userObj={userObj}/></Route>
-                        <Route exact path="/profile"><Profile/></Route>
+                        <Route exact path="/profile"><Profile userObj={userObj}/></Route>
                         <Redirect from="*" to="/"/>
                     </> :
                     <>
