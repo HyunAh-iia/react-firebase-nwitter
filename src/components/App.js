@@ -15,7 +15,11 @@ function App() {
         authService.onAuthStateChanged((user) => {
             if (user) {
                 setIsLoggedIn(true);
-                setUserObj(user);
+                setUserObj({
+                    displayName: user.displayName,
+                    uid: user.uid,
+                    updateProfile: (args) => user.updateProfile(args),
+                });
             } else {
                 setIsLoggedIn(false);
                 setUserObj(null);
@@ -24,8 +28,20 @@ function App() {
         });
     }, []);
 
+    const refreshUser = () => {
+        // 객체가 너무 클 경우 리액트가 변화감지를 어려워하니 object의 크기를 줄이든 새로운 객체로 인식하게끔 하면 됨!
+        // 강제인식 : setUserObj(Object.assign({}, user}
+        // 여튼 authService.currentUser에는 너무 많은 양의 정보가 담겨있기때문에 필요한 정보 uid, displayName, updateProfile()만 추출하는 방식으로 접근
+        const user = authService.currentUser;
+        setUserObj({
+            displayName: user.displayName,
+                uid: user.uid,
+                updateProfile: (args) => user.updateProfile(args),
+        });
+    }
+
     return <>
-        {init ? <Router isLoggedIn={isLoggedIn} userObj={userObj}/> : "initializing..."}
+        {init ? <Router refreshUser={refreshUser} isLoggedIn={isLoggedIn} userObj={userObj}/> : "initializing..."}
     </>;
 }
 

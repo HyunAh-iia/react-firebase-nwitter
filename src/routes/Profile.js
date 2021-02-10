@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {authService} from "../myFirebase";
 import {useHistory} from "react-router-dom";
 
-const Profile = ({userObj}) => {
+const Profile = ({refreshUser, userObj}) => {
     const history = useHistory();
     const [newName, setNewName] = useState(userObj.displayName);
     const onLogout = () => {
@@ -16,6 +16,7 @@ const Profile = ({userObj}) => {
             await userObj.updateProfile({
                 displayName: newName,
             });
+            refreshUser();
         }
     };
 
