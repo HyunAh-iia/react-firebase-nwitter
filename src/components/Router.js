@@ -9,7 +9,7 @@ const Router = ({isLoggedIn, userObj}) => {
 
     return (
         <HRouter>
-            {isLoggedIn && <Navigation/>}
+            {isLoggedIn && <Navigation userObj={userObj}/>}
             <Switch>
                 {isLoggedIn ?
                     <>
