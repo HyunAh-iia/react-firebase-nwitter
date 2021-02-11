@@ -10,8 +10,7 @@ const Tweet = ({tweetObj, isOwner}) => {
     const onDelete = async () => {
         const isOk = window.confirm("트윗을 삭제하시겠습니까?");
         if (isOk) {
-            const FileRef = await storageService.refFromURL(tweetObj.imageUrl);
-            await FileRef.delete();
+            !!tweetObj.imageUrl && await storageService.refFromURL(tweetObj.imageUrl).delete();
             await dbService.doc(`tweets/${tweetObj.id}`).delete(); // firebase.firestore().doc(`documentPath`)
         }
     };
