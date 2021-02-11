@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {dbService, storageService} from "../myFirebase";
 import {v4 as uuidv4} from "uuid";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPlus, faTimes} from "@fortawesome/free-solid-svg-icons";
 
 const TweetFactory = ({userObj}) => {
     const [tweet, setTweet] = useState("");
@@ -9,6 +11,10 @@ const TweetFactory = ({userObj}) => {
     const onSubmit = async (e) => {
         e.preventDefault();
         let fileUrl = "";
+
+        if (!tweet) {
+            return;
+        }
 
         if (image) {
             const fileRef = storageService
@@ -50,24 +56,46 @@ const TweetFactory = ({userObj}) => {
     };
 
     const onClearImage = (e) => {
-        setImage(null);
+        setImage("");
     }
 
     return (
-    <form>
-        <input type="text"
-               value={tweet}
-               onChange={onChange}
-               placeholder="오늘은 어떠셨나요?"
-               maxLength={120}/>
-        <input type="file" accept="image/*" onChange={onFileChange}/>
-        <input type="submit" onClick={onSubmit} value="tweet"/>
-        {image &&
-        <div>
-            <img src={image} width="50px" height="50px"/>
-            <button onClick={onClearImage}>취소</button>
-        </div>}
-    </form>
+        <form onSubmit={onSubmit} className="factoryForm">
+            <div className="factoryInput__container">
+                <input type="text"
+                       value={tweet}
+                       onChange={onChange}
+                       placeholder="오늘은 어떠셨나요?"
+                       maxLength={120}/>
+                <input type="submit" value="&rarr;" className="factoryInput__arrow" />
+
+            </div>
+            <label htmlFor="attach-file" className="factoryInput__label">
+                <span>사진 추가</span>
+                <FontAwesomeIcon icon={faPlus}/>
+            </label>
+            <input id="attach-file"
+                   type="file"
+                   accept="image/*"
+                   onChange={onFileChange}
+                   style={{
+                       opacity: 0,
+                   }}
+            />
+            {image &&
+            <div className="factoryForm__attachment">
+                <img src={image}
+                     style={{
+                         backgroundImage: image,
+                     }}
+                />
+                <div className="factoryForm__clear" onClick={onClearImage}>
+                    <span>Remove</span>
+                    <FontAwesomeIcon icon={faTimes} />
+                </div>
+            </div>
+            }
+        </form>
     );
 }
 
