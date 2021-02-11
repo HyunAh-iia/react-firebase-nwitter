@@ -7,17 +7,17 @@ const Home = ({userObj}) => {
     const [tweets, setTweets] = useState([]);
 
     useEffect(() => {
-        dbService.collection("tweets").onSnapshot(snapshot => { //snapshot => QuerySnapshot
+        dbService.collection("tweets")
+            .orderBy("createdAt", "desc")
+            .onSnapshot(snapshot => { //snapshot => QuerySnapshot
             //snapshot.docs => QueryDocumentSnapshot
             const tweetArray = snapshot.docs.map(doc => ({
                 id: doc.id,
                 ...doc.data(), // QueryDocumentSnapshot.data()
             }));
-
             setTweets(tweetArray);
         })
     }, []);
-
 
     return <div className="container">
         <TweetFactory userObj={userObj}/>
