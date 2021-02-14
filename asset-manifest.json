@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/react-firebase-nwitter/static/css/main.1e588e86.chunk.css",
-    "main.js": "/react-firebase-nwitter/static/js/main.6ccb4235.chunk.js",
-    "main.js.map": "/react-firebase-nwitter/static/js/main.6ccb4235.chunk.js.map",
+    "main.js": "/react-firebase-nwitter/static/js/main.f7bef006.chunk.js",
+    "main.js.map": "/react-firebase-nwitter/static/js/main.f7bef006.chunk.js.map",
     "runtime-main.js": "/react-firebase-nwitter/static/js/runtime-main.b5fc447b.js",
     "runtime-main.js.map": "/react-firebase-nwitter/static/js/runtime-main.b5fc447b.js.map",
-    "static/js/2.bd16d6f0.chunk.js": "/react-firebase-nwitter/static/js/2.bd16d6f0.chunk.js",
-    "static/js/2.bd16d6f0.chunk.js.map": "/react-firebase-nwitter/static/js/2.bd16d6f0.chunk.js.map",
+    "static/js/2.3566d4fb.chunk.js": "/react-firebase-nwitter/static/js/2.3566d4fb.chunk.js",
+    "static/js/2.3566d4fb.chunk.js.map": "/react-firebase-nwitter/static/js/2.3566d4fb.chunk.js.map",
     "index.html": "/react-firebase-nwitter/index.html",
     "static/css/main.1e588e86.chunk.css.map": "/react-firebase-nwitter/static/css/main.1e588e86.chunk.css.map",
-    "static/js/2.bd16d6f0.chunk.js.LICENSE.txt": "/react-firebase-nwitter/static/js/2.bd16d6f0.chunk.js.LICENSE.txt"
+    "static/js/2.3566d4fb.chunk.js.LICENSE.txt": "/react-firebase-nwitter/static/js/2.3566d4fb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b5fc447b.js",
-    "static/js/2.bd16d6f0.chunk.js",
+    "static/js/2.3566d4fb.chunk.js",
     "static/css/main.1e588e86.chunk.css",
-    "static/js/main.6ccb4235.chunk.js"
+    "static/js/main.f7bef006.chunk.js"
   ]
 }
